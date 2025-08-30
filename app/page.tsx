@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { 
   Zap, 
-  DollarSign, 
+  CheckCircle, 
   Shield, 
   ChevronRight,
   Menu
@@ -131,10 +131,10 @@ export default function Home() {
             {/* Feature Card 2 */}
             <div className="card p-6 text-center">
               <div className="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-6 h-6 text-white" />
+                <CheckCircle className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-semibold text-[#111827] mb-2">Zero Deposit Options</h3>
-              <p className="text-sm text-[#6B7280]">Choose from flexible payment plans with no hidden fees</p>
+              <h3 className="font-semibold text-[#111827] mb-2">Fast Approvals & Listing</h3>
+              <p className="text-sm text-[#6B7280]">Quick approval process and easy listing features</p>
             </div>
             
             {/* Feature Card 3 */}

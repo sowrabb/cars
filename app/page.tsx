@@ -17,7 +17,7 @@ export default function Home() {
         <div className="flex items-center">
           {/* OCARS Logo */}
           <Image
-            src="/ocars-logo.png"
+            src="/cars/ocars-logo.png"
             alt="OCARS — Car Rental"
             width={350}
             height={350}
@@ -65,7 +65,7 @@ export default function Home() {
                     className="h-[44px] w-auto transition-transform hover:scale-105"
                   >
                     <Image
-                      src="/app-store-badge.png"
+                      src="/cars/app-store-badge.png"
                       alt="Download on the App Store"
                       width={260}
                       height={76}
@@ -78,7 +78,7 @@ export default function Home() {
                     className="h-[44px] w-auto transition-transform hover:scale-105"
                   >
                      <Image
-                       src="/google-play-badge.png"
+                       src="/cars/google-play-badge.png"
                        alt="Get it on Google Play"
                        width={260}
                        height={76}
@@ -101,7 +101,7 @@ export default function Home() {
               <div className="relative w-full max-w-md lg:max-w-lg">
                 <div className="aspect-[16/9] bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/banner.png"
+                    src="/cars/banner.png"
                     alt="OCARS car rental banner with multiple cars"
                     width={2048}
                     height={1117}
@@ -178,7 +178,7 @@ export default function Home() {
             className="flex-1 flex items-center justify-center"
           >
             <Image
-              src="/app-store-badge.png"
+              src="/cars/app-store-badge.png"
               alt="Download on the App Store"
               width={130}
               height={38}
@@ -190,7 +190,7 @@ export default function Home() {
             className="flex-1 flex items-center justify-center"
           >
             <Image
-              src="/google-play-badge.png"
+              src="/cars/google-play-badge.png"
               alt="Get it on Google Play"
               width={130}
               height={38}

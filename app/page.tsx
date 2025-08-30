@@ -1,103 +1,204 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { 
+  Zap, 
+  DollarSign, 
+  Shield, 
+  ChevronRight,
+  Menu
+} from 'lucide-react';
 
 export default function Home() {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white border-b border-[#E5E7EB] h-[72px] flex items-center justify-between px-6 lg:px-6">
+        <div className="flex items-center">
+          {/* OCARS Logo */}
+          <Image
+            src="/ocars-logo.png"
+            alt="OCARS — Car Rental"
+            width={350}
+            height={350}
+            className="h-35 w-auto"
+            priority
+          />
+        </div>
+        
+        <nav className="hidden lg:flex items-center space-x-8">
+          <a href="#pricing" className="text-[#6B7280] hover:text-[#111827] transition-colors">
+            Pricing
+          </a>
+          <a href="#faq" className="text-[#6B7280] hover:text-[#111827] transition-colors">
+            FAQ
+          </a>
+          <a href="#hero" className="btn-primary flex items-center gap-2">
+            Get the App
+            <ChevronRight className="w-4 h-4" />
+          </a>
+        </nav>
+        
+        {/* Mobile: Get App button */}
+        <button className="lg:hidden btn-outline text-sm flex items-center gap-2">
+          <Menu className="w-4 h-4" />
+          Get the App
+        </button>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Hero Section */}
+      <section id="hero" className="px-4 lg:px-6 py-12 lg:py-20">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+                        {/* Left Column */}
+            <div className="text-center lg:text-left space-y-6">
+              <h1 className="text-3xl lg:text-5xl font-bold text-[#111827] leading-tight">
+                RIDE WITH RIGHT CARS
+              </h1>
+              
+              {/* Store Badges */}
+              <div className="space-y-3">
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                  <a 
+                    href="https://apps.apple.com/in/app/ludo-king/id993090598" 
+                    aria-label="Download on the App Store"
+                    className="h-[44px] w-auto transition-transform hover:scale-105"
+                  >
+                    <Image
+                      src="/app-store-badge.png"
+                      alt="Download on the App Store"
+                      width={260}
+                      height={76}
+                      className="h-[44px] w-auto"
+                    />
+                  </a>
+                  <a 
+                    href="https://play.google.com/store/apps/details?id=com.ludo.king&hl=en" 
+                    aria-label="Get it on Google Play"
+                    className="h-[44px] w-auto transition-transform hover:scale-105"
+                  >
+                     <Image
+                       src="/google-play-badge.png"
+                       alt="Get it on Google Play"
+                       width={260}
+                       height={76}
+                       className="h-[44px] w-auto"
+                     />
+                  </a>
+                </div>
+                <p className="text-sm text-[#6B7280]">Available on iOS & Android</p>
+              </div>
+              
+              {/* Primary CTA */}
+              <button className="btn-primary w-full sm:w-auto flex items-center gap-2 mx-auto lg:mx-0">
+                Get Started
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+            
+            {/* Right Column - Hero Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-md lg:max-w-lg">
+                <div className="aspect-[16/9] bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/banner.png"
+                    alt="OCARS car rental banner with multiple cars"
+                    width={2048}
+                    height={1117}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mini Features Strip */}
+      <section className="px-4 lg:px-6 py-12 bg-[#F9FAFB]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Feature Card 1 */}
+            <div className="card p-6 text-center">
+              <div className="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-[#111827] mb-2">Instant Booking</h3>
+              <p className="text-sm text-[#6B7280]">Book your car in seconds with our streamlined process</p>
+            </div>
+            
+            {/* Feature Card 2 */}
+            <div className="card p-6 text-center">
+              <div className="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-[#111827] mb-2">Zero Deposit Options</h3>
+              <p className="text-sm text-[#6B7280]">Choose from flexible payment plans with no hidden fees</p>
+            </div>
+            
+            {/* Feature Card 3 */}
+            <div className="card p-6 text-center">
+              <div className="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-[#111827] mb-2">24×7 Roadside</h3>
+              <p className="text-sm text-[#6B7280]">Round-the-clock support whenever you need assistance</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-4 lg:px-6 py-8 border-t border-[#E5E7EB]">
+        <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-[#6B7280] text-sm">
+            © {currentYear} OCARS
+          </div>
+          
+          <div className="flex items-center space-x-6 text-sm">
+            <a href="#terms" className="text-[#6B7280] hover:text-[#111827] transition-colors">
+              Terms
+            </a>
+            <a href="#privacy" className="text-[#6B7280] hover:text-[#111827] transition-colors">
+              Privacy
+            </a>
+            <a href="#contact" className="text-[#6B7280] hover:text-[#111827] transition-colors">
+              Contact
+            </a>
+          </div>
+        </div>
+      </footer>
+
+      {/* Mobile Sticky Bottom Bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E7EB] p-4">
+        <div className="flex gap-3">
+          <a 
+            href="https://apps.apple.com/in/app/ludo-king/id993090598" 
+            className="flex-1 flex items-center justify-center"
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/app-store-badge.png"
+              alt="Download on the App Store"
+              width={130}
+              height={38}
+              className="h-[38px] w-auto"
             />
-            Deploy now
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a 
+            href="https://play.google.com/store/apps/details?id=com.ludo.king&hl=en" 
+            className="flex-1 flex items-center justify-center"
           >
-            Read our docs
+            <Image
+              src="/google-play-badge.png"
+              alt="Get it on Google Play"
+              width={130}
+              height={38}
+              className="h-[38px] w-auto"
+            />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }

@@ -4,8 +4,26 @@ import {
   CheckCircle, 
   Shield, 
   ChevronRight,
-  Menu
+  Menu,
+  Phone,
+  MessageCircle
 } from 'lucide-react';
+
+// Utility function to get correct image path
+const getImagePath = (imageName: string) => {
+  if (typeof window !== 'undefined') {
+    // Client-side: use current domain
+    return `/${imageName}`;
+  }
+  // Server-side: use environment-based path
+  if (process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS) {
+    return `https://ocars.app/${imageName}`;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    return `/cars/${imageName}`;
+  }
+  return `/${imageName}`;
+};
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
@@ -17,7 +35,7 @@ export default function Home() {
         <div className="flex items-center">
           {/* OCARS Logo */}
           <Image
-            src="/cars/ocars-logo.png"
+            src={getImagePath("ocars-logo.png")}
             alt="OCARS — Car Rental"
             width={350}
             height={350}
@@ -33,17 +51,17 @@ export default function Home() {
           <a href="#faq" className="text-[#6B7280] hover:text-[#111827] transition-colors">
             FAQ
           </a>
-          <a href="#hero" className="btn-primary flex items-center gap-2">
-            Get the App
+          <a href="/terms" className="btn-primary flex items-center gap-2">
+            Terms & Conditions
             <ChevronRight className="w-4 h-4" />
           </a>
         </nav>
         
-        {/* Mobile: Get App button */}
-        <button className="lg:hidden btn-outline text-sm flex items-center gap-2">
+        {/* Mobile: Terms button */}
+        <a href="/terms" className="lg:hidden btn-outline text-sm flex items-center gap-2">
           <Menu className="w-4 h-4" />
-          Get the App
-        </button>
+          Terms & Conditions
+        </a>
       </header>
 
       {/* Hero Section */}
@@ -52,33 +70,24 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                         {/* Left Column */}
             <div className="text-center lg:text-left space-y-6">
-              <h1 className="text-3xl lg:text-5xl font-bold text-[#111827] leading-tight">
+                            <h1 className="text-3xl lg:text-5xl font-bold text-[#111827] leading-tight">
                 RIDE WITH RIGHT CARS
               </h1>
               
-              {/* Store Badges */}
+              <p className="text-lg text-[#6B7280] leading-relaxed">
+                Whether you&apos;re traveling with family, heading out for a solo trip, or simply looking for a great drive in a premium car, OCars offers the best car rental options.
+              </p>
+              
+              {/* Store Badge */}
               <div className="space-y-3">
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-                  <a 
-                    href="https://apps.apple.com/in/app/ludo-king/id993090598" 
-                    aria-label="Download on the App Store"
-                    className="h-[44px] w-auto transition-transform hover:scale-105"
-                  >
-                    <Image
-                      src="/cars/app-store-badge.png"
-                      alt="Download on the App Store"
-                      width={260}
-                      height={76}
-                      className="h-[44px] w-auto"
-                    />
-                  </a>
+                <div className="flex items-center justify-center lg:justify-start">
                   <a 
                     href="https://play.google.com/store/apps/details?id=com.ludo.king&hl=en" 
                     aria-label="Get it on Google Play"
                     className="h-[44px] w-auto transition-transform hover:scale-105"
                   >
                      <Image
-                       src="/cars/google-play-badge.png"
+                       src={getImagePath("app-store-badge.png")}
                        alt="Get it on Google Play"
                        width={260}
                        height={76}
@@ -86,12 +95,11 @@ export default function Home() {
                      />
                   </a>
                 </div>
-                <p className="text-sm text-[#6B7280]">Available on iOS & Android</p>
               </div>
               
               {/* Primary CTA */}
-              <button className="btn-primary w-full sm:w-auto flex items-center gap-2 mx-auto lg:mx-0">
-                Get Started
+              <button className="btn-primary w-auto flex items-center gap-2 mx-auto lg:mx-0">
+                Coming Soon
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -101,7 +109,7 @@ export default function Home() {
               <div className="relative w-full max-w-md lg:max-w-lg">
                 <div className="aspect-[16/9] bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/cars/banner.png"
+                    src={getImagePath("banner.png")}
                     alt="OCARS car rental banner with multiple cars"
                     width={2048}
                     height={1117}
@@ -170,34 +178,27 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Mobile Sticky Bottom Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E7EB] p-4">
-        <div className="flex gap-3">
-          <a 
-            href="https://apps.apple.com/in/app/ludo-king/id993090598" 
-            className="flex-1 flex items-center justify-center"
-          >
-            <Image
-              src="/cars/app-store-badge.png"
-              alt="Download on the App Store"
-              width={130}
-              height={38}
-              className="h-[38px] w-auto"
-            />
-          </a>
-          <a 
-            href="https://play.google.com/store/apps/details?id=com.ludo.king&hl=en" 
-            className="flex-1 flex items-center justify-center"
-          >
-            <Image
-              src="/cars/google-play-badge.png"
-              alt="Get it on Google Play"
-              width={130}
-              height={38}
-              className="h-[38px] w-auto"
-            />
-          </a>
-        </div>
+      {/* Floating Action Buttons - All Devices */}
+      <div className="fixed bottom-6 right-6 flex gap-3 z-50">
+        {/* WhatsApp Button */}
+        <a
+          href="https://wa.me/917799110794?text=Hi%2C%20I%20would%20like%20to%20know%20more"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full p-4 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 min-w-[140px]"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <span className="text-sm font-medium">WhatsApp Now</span>
+        </a>
+        
+        {/* Call Button */}
+        <a
+          href="tel:+917799110794"
+          className="bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-full p-4 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 min-w-[140px]"
+        >
+          <Phone className="w-5 h-5" />
+          <span className="text-sm font-medium">Call Us Now</span>
+        </a>
       </div>
     </div>
   );

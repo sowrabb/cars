@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "build:github": "GITHUB_ACTIONS=true npm run build",
     "start": "next start",
     "lint": "eslint",
     "export": "next build && next export",
-    "deploy": "npm run build && echo 'Build complete. Push to main branch to deploy to GitHub Pages.'"
+    "deploy": "npm run build:github && echo 'Build complete. Push to main branch to deploy to GitHub Pages.'"
   },
   "dependencies": {
     "lucide-react": "^0.542.0",

@@ -39,6 +39,9 @@ jobs:
       - name: Ensure CNAME in out
         run: echo "ocars.in" > out/CNAME
 
+      - name: Add .nojekyll to serve _next assets
+        run: touch out/.nojekyll
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

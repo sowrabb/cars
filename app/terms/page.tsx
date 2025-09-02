@@ -4,17 +4,6 @@ import Link from 'next/link';
 
 // Utility function to get correct image path
 const getImagePath = (imageName: string) => {
-  if (typeof window !== 'undefined') {
-    // Client-side: use current domain
-    return `/${imageName}`;
-  }
-  // Server-side: use environment-based path
-  if (process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS) {
-    return `https://ocars.app/${imageName}`;
-  }
-  if (process.env.NODE_ENV === 'production') {
-    return `/cars/${imageName}`;
-  }
   return `/${imageName}`;
 };
 

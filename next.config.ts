@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
     assetPrefix: 'https://ocars.in',
     basePath: '',
   }),
-  ...(process.env.NODE_ENV === 'production' && !process.env.GITHUB_ACTIONS && {
-    // GitHub Pages without custom domain (fallback)
-    basePath: '/cars'
-  }),
   images: {
     unoptimized: true
   }

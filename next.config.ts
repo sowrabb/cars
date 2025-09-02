@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   // Configure for different environments
   ...(process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS && {
     // GitHub Pages with custom domain
-    assetPrefix: 'https://ocars.app',
+    assetPrefix: 'https://ocars.in',
     basePath: '',
   }),
   ...(process.env.NODE_ENV === 'production' && !process.env.GITHUB_ACTIONS && {

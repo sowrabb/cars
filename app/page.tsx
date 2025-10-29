@@ -1,4 +1,7 @@
+"use client";
+
 import Image from 'next/image';
+import { useState } from 'react';
 import { 
   Zap, 
   CheckCircle, 
@@ -6,7 +9,8 @@ import {
   ChevronRight,
   Menu,
   Phone,
-  MessageCircle
+  MessageCircle,
+  Car
 } from 'lucide-react';
 
 // Utility function to get correct image path
@@ -16,6 +20,7 @@ const getImagePath = (imageName: string) => {
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
+  const [showCallButton, setShowCallButton] = useState(false);
   
   return (
     <div className="min-h-screen bg-white">
@@ -33,24 +38,6 @@ export default function Home() {
           />
         </div>
         
-        <nav className="hidden lg:flex items-center space-x-8">
-          <a href="#pricing" className="text-[#6B7280] hover:text-[#111827] transition-colors">
-            Pricing
-          </a>
-          <a href="#faq" className="text-[#6B7280] hover:text-[#111827] transition-colors">
-            FAQ
-          </a>
-          <a href="/terms" className="btn-primary flex items-center gap-2">
-            Terms & Conditions
-            <ChevronRight className="w-4 h-4" />
-          </a>
-        </nav>
-        
-        {/* Mobile: Terms button */}
-        <a href="/terms" className="lg:hidden btn-outline text-sm flex items-center gap-2">
-          <Menu className="w-4 h-4" />
-          Terms & Conditions
-        </a>
       </header>
 
       {/* Hero Section */}
@@ -67,23 +54,30 @@ export default function Home() {
                 Whether you&apos;re traveling with family, heading out for a solo trip, or simply looking for a great drive in a premium car, OCars offers the best car rental options.
               </p>
               
-              {/* Store Badge */}
+              {/* Attach Your Car Button */}
               <div className="space-y-3">
                 <div className="flex items-center justify-center lg:justify-start">
-                  <a 
-                    href="https://play.google.com/store/apps/details?id=com.ludo.king&hl=en" 
-                    aria-label="Get it on Google Play"
-                    className="h-[44px] w-auto transition-transform hover:scale-105"
+                  <button 
+                    onClick={() => setShowCallButton(true)}
+                    className="btn-outline w-auto flex items-center gap-2 mx-auto lg:mx-0"
                   >
-                     <Image
-                       src={getImagePath("app-store-badge.png")}
-                       alt="Get it on Google Play"
-                       width={260}
-                       height={76}
-                       className="h-[44px] w-auto"
-                     />
-                  </a>
+                    <Car className="w-4 h-4" />
+                    Attach Your Car
+                  </button>
                 </div>
+                
+                {/* Call Button (shown after Attach Your Car is clicked) */}
+                {showCallButton && (
+                  <div className="flex items-center justify-center lg:justify-start">
+                    <a
+                      href="tel:+917799110794"
+                      className="bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-full px-6 py-3 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span className="font-medium">Call Now</span>
+                    </a>
+                  </div>
+                )}
               </div>
               
               {/* Primary CTA */}
@@ -153,17 +147,6 @@ export default function Home() {
             © {currentYear} OCARS
           </div>
           
-          <div className="flex items-center space-x-6 text-sm">
-            <a href="#terms" className="text-[#6B7280] hover:text-[#111827] transition-colors">
-              Terms
-            </a>
-            <a href="#privacy" className="text-[#6B7280] hover:text-[#111827] transition-colors">
-              Privacy
-            </a>
-            <a href="#contact" className="text-[#6B7280] hover:text-[#111827] transition-colors">
-              Contact
-            </a>
-          </div>
         </div>
       </footer>
 

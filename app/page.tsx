@@ -1,13 +1,10 @@
 "use client";
 
 import Image from 'next/image';
-import { useState } from 'react';
 import { 
   Zap, 
   CheckCircle, 
   Shield, 
-  ChevronRight,
-  Menu,
   Phone,
   MessageCircle,
   Car
@@ -20,7 +17,6 @@ const getImagePath = (imageName: string) => {
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
-  const [showCallButton, setShowCallButton] = useState(false);
   
   return (
     <div className="min-h-screen bg-white">
@@ -54,37 +50,18 @@ export default function Home() {
                 Whether you&apos;re traveling with family, heading out for a solo trip, or simply looking for a great drive in a premium car, OCars offers the best car rental options.
               </p>
               
-              {/* Attach Your Car Button */}
+              {/* Attach Your Car - triggers call directly */}
               <div className="space-y-3">
                 <div className="flex items-center justify-center lg:justify-start">
-                  <button 
-                    onClick={() => setShowCallButton(true)}
+                  <a 
+                    href="tel:+917799110794"
                     className="btn-outline w-auto flex items-center gap-2 mx-auto lg:mx-0"
                   >
                     <Car className="w-4 h-4" />
                     Attach Your Car
-                  </button>
+                  </a>
                 </div>
-                
-                {/* Call Button (shown after Attach Your Car is clicked) */}
-                {showCallButton && (
-                  <div className="flex items-center justify-center lg:justify-start">
-                    <a
-                      href="tel:+917799110794"
-                      className="bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-full px-6 py-3 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2"
-                    >
-                      <Phone className="w-4 h-4" />
-                      <span className="font-medium">Call Now</span>
-                    </a>
-                  </div>
-                )}
               </div>
-              
-              {/* Primary CTA */}
-              <button className="btn-primary w-auto flex items-center gap-2 mx-auto lg:mx-0">
-                Coming Soon
-                <ChevronRight className="w-4 h-4" />
-              </button>
             </div>
             
             {/* Right Column - Hero Image */}
